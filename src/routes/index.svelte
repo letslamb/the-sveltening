@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+  import TestImages from '$lib/components/images/Demo.svelte'
+  import TestHamburger from '$lib/components/primitives/Demo.svelte'
+</script>
+
+<h1>Welcome to @letslamb's component library testing ground</h1>
+
+<TestHamburger />
+
+<TestImages />
+
