@@ -4,17 +4,21 @@
   import { onMount } from "svelte";
 
   export let thumbnail;
-  // export let src;
   export let alt;
-  // export let width;
-  // export let height;
+  // 'src', 'width', and 'height' are for the normal <img> tag. 
+  export let src;
+  export let width;
+  export let height;
+  /* TODO: 'rounded' needs to be a custom property tht can be fed in by the dev. Maybe use a default value instead of making it a Svelte prop at all */
   export let rounded;
-  export let ariaLabel;
+  // 'processedImages' should be used when you have multiple procesed versions of an image to be served based on 
   export let processedImages;
 
   let loaded = false;
   let thisImage;
   let currentSrc;
+  let webps;
+  let jpgs;
 
 
   onMount(() => {
@@ -28,11 +32,13 @@
 
   if (processedImages) {
     processedImages.reverse();
+    // TODO: this needs to be cleaned up, the 'processedImages' prop should be coming into the component already cleaned up & ready for use, not being massaged inside this component
+    webps = processedImages.filter(x => x.format === 'webp')
+
+    jpgs = processedImages.filter(x => x.format === 'jpg')
   }
 
-  const webps = processedImages.filter(x => x.format === 'webp')
 
-  const jpgs = processedImages.filter(x => x.format === 'jpg')
 </script>
 
 <ImageWrapper {currentSrc} {thumbnail}>
@@ -59,8 +65,10 @@
     </picture>
   {:else}
     <img
+      {src}
       {alt}
-      {ariaLabel}
+      {width}
+      {height}
       class:loaded
       class:rounded
       bind:this={thisImage}
@@ -79,6 +87,7 @@
     opacity: 1;
   }
 
+  /* TODO: this needs to be a custom property tht can be fed in by the dev */
   img.rounded {
     border-radius: 50%;
   }
