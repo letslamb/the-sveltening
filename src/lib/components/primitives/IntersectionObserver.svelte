@@ -1,4 +1,6 @@
 <script>
+  // This component wraps its slot content in an Intersection Observer and passes down a boolean about whether or not the element is scrolled into view, as a prop. Good for lazy loading or any other effects you want to trigger when an element scrolls into view. Note that you'll need to use let:intersecting when you feed a child element component to this in practice, and do your conditional rendering and/or class toggling closer to the actual element/component.
+
   import { onMount } from "svelte";
 
   export let once = false;
@@ -8,9 +10,14 @@
   export let right = 0;
 
   let intersecting = false;
+
+  // container variable will hold a reference to the wrapper div's "this", so it can be the target of
+  // the IntersectionObserver
   let container;
 
   onMount(() => {
+
+    // use the native IntersectionObserver API if it's available
     if (typeof IntersectionObserver !== "undefined") {
       const rootMargin = `${bottom}px ${left}px ${top}px ${right}px`;
 
@@ -50,6 +57,7 @@
   });
 </script>
 
+<!-- render the slot content only if this wrapper <div> is detected by the Intersection Observer -->
 <div bind:this={container}>
   <slot {intersecting} />
 </div>
