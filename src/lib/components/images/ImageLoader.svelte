@@ -11,7 +11,7 @@
   export let width;
   export let height;
   /**
-   * 'processedImages' should be used when you have multiple procesed versions of an image to be served based on viewport width. It can also handle multiple image formats
+   * 'processedImages' should be used when you have multiple processed versions of an image to be served based on viewport width. It can also handle multiple image formats
    * @type {Object[]}
    * @property {string} processedImages[].format - image format (webp, jpg, etc.)
    * @property {number} processedImages[].width - image width
@@ -28,6 +28,8 @@
       <Image
         {src}
         {alt}
+        {width}
+        {height}
         {processedImages}
         currentSrc={href}
       />
@@ -36,6 +38,8 @@
     <Image
       {src}
       {alt}
+      {width}
+      {height}
       {processedImages}
     />
   {/if}
