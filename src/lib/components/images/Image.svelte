@@ -7,8 +7,6 @@
   export let src;
   export let width;
   export let height;
-  /* TODO: 'rounded' needs to be a custom property that can be fed in by a dev. Maybe use a default value instead of making it a Svelte prop at all */
-  export let rounded;
   // 'processedImages' should be used when you have multiple processed versions of an image to be served
   export let processedImages;
   // 'currentSrc' is set after the component is mounted and img.currentSrc is decided. This allows flexibile use of ImageLoader for regular <img> or <picture>. 'currentSrc' is exposed as a prop only because it needs to be passed up with slot props in the case of e.g. the <ImageLoader> component when its 'thumbnail=true'
@@ -60,7 +58,7 @@
         srcset={`${image.src} ${image.width}w`}
       />
     {/each}
-    <img bind:this={thisImage} class:loaded class:rounded src={jpgs[0].src} width={jpgs[0].width} height={jpgs[0].height} {alt} />
+    <img bind:this={thisImage} class:loaded src={jpgs[0].src} width={jpgs[0].width} height={jpgs[0].height} {alt} />
   </picture>
 {:else}
   <img
@@ -69,7 +67,6 @@
     {width}
     {height}
     class:loaded
-    class:rounded
     bind:this={thisImage}
   />
 {/if}
@@ -80,13 +77,10 @@
     height: auto;
     opacity: 0;
     transition: opacity 1200ms ease-out;
+    border-radius: var(--border-radius, 0);
   }
   img.loaded {
     opacity: 1;
   }
 
-  /* TODO: this needs to be a custom property tht can be fed in by the dev */
-  img.rounded {
-    border-radius: var(--border-radius, 50%);
-  }
 </style>
