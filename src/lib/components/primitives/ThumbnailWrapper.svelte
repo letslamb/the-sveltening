@@ -1,6 +1,9 @@
 <script>
   // This component wraps a single element, or the top-level element of a component, and allows it to become a thumbnail with a link
 
+  /**
+   * @type {string}
+  */
   export let href
 
 </script>
