@@ -1,9 +1,10 @@
 <script>
   import ImageLoader from '$lib/components/images/ImageLoader.svelte'
   import Kitty from '$static/kitty.jpeg?w=200;400;700&format=webp;jpg&meta'
+  import ImageWrapper from "$lib/components/primitives/ThumbnailWrapper.svelte";
   import staticCat from '$static/kitty.jpeg'
 
-
+  console.log(`Unfiltered vite-imagetools object: ${JSON.stringify(Kitty, null, " ")}`)
   // this functions strips image metadata, leaving only what we need
   function filterArrayOfImageObjects (arrayOfImageObjects) {
     const newArr = []
@@ -23,12 +24,18 @@
   }
 
   const kittyImages = filterArrayOfImageObjects(Kitty)
+
+  console.log(`after calling 'filterArrayOfImageObjects': ${JSON.stringify(kittyImages, null, " ")}`)
 </script>
 
 <!-- <ImageLoader processedImages={kittyImages} /> -->
 
 <section class="container">
-  <ImageLoader processedImages={kittyImages} />
+  <ImageLoader 
+    processedImages={kittyImages}
+    rounded={true}
+    --border-radius="10%" 
+  />
 </section>
 
 <div>
@@ -37,6 +44,8 @@
 
 <style>
   .container {
+    margin: 0 auto;
+    max-width: 500px;
     padding: 0 2rem;
   }
 
