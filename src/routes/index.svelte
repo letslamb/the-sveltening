@@ -1,5 +1,5 @@
 <script>
-  import TestImages from '$lib/components/images/Demo.svelte'
+  import TestImages from '$lib/components/combos/Demo.svelte'
   import TestHamburger from '$lib/components/primitives/Demo.svelte'
 </script>
 
