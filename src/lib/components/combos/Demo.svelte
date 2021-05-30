@@ -1,6 +1,6 @@
 <script>
   import ImageLoader from '$lib/components/combos/ImageLoader.svelte'
-  import Kitty from '$static/kitty.jpeg?w=200;400;700&format=webp;jpg;avif&meta'
+  import Kitty from '$static/kitty.jpeg?w=200;400;700&format=webp;jpg&meta'
   import staticCat from '$static/kitty.jpeg'
 
   console.log(`Unfiltered vite-imagetools object: ${JSON.stringify(Kitty, null, " ")}`)
