@@ -1,5 +1,5 @@
 <script>
-  // This component wraps its slot content in an Intersection Observer and passes down a boolean about whether or not the element is scrolled into view, as a prop. Good for lazy loading or any other effects you want to trigger when an element scrolls into view. Note that you'll need to use let:intersecting when you feed a child element component to this in practice, and do your conditional rendering and/or class toggling closer to the actual element/component.
+  // This component wraps its slot content in an Intersection Observer and passes down a boolean about whether or not the element is scrolled into view, as a prop. Good for lazy loading or any other effects you want to trigger when an element scrolls into view. Note that you'll need to use let:intersecting when you feed a child element/component to this in practice, and do your conditional rendering and/or class toggling closer to the actual child element/component.
 
   import { onMount } from "svelte";
 
