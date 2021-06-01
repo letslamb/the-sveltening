@@ -5,7 +5,7 @@
 }
 
 :root {
-  font-size: calc(0.8rem + 0.5vw);
+  font-size: calc(1rem + 0.5vw);
 }
 
 body {
@@ -115,6 +115,33 @@ nav,
 section {
   display: block;
 }
+
+/* BEGIN CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
+
+body,
+#svelte,
+main {
+  min-height: 100vh;
+}
+
+html {
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+/* END CODE BLOCK FOR PINNING FOOTER TO BOTTOM OF PAGE */
 
 figure {
   /* Safari hack to prevent bottom gap between figure and image */
