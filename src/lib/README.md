@@ -8,7 +8,7 @@
 
 ### HamburgerMenu.svelte
 
-This component accepts an array of objects to be fed into the Nav menu. Properties needed are for the visible text the item will display in the opened menu, and the route the item will link to onclick.
+This component accepts an array of objects to be fed into the Nav menu. Properties needed are for the `visibletext` the item will display in the opened menu, and the `route` the item will link to onclick.
 
 #### CSS Custom Properties
 
