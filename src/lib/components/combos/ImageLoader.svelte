@@ -1,7 +1,7 @@
 <script>
-  import IntersectionObserver from "$lib/components/primitives/IntersectionObserver.svelte";
-  import ThumbnailWrapper from "$lib/components/primitives/ThumbnailWrapper.svelte";
-  import Image from "../primitives/Image.svelte";
+  import IntersectionObserver from "$lib/components/presentation-primitives/IntersectionObserver.svelte";
+  import ThumbnailWrapper from "$lib/components/presentation-primitives/ThumbnailWrapper.svelte";
+  import Image from "$lib/components/presentation-primitives/Image.svelte";
 
   /**
    * @type {boolean}
