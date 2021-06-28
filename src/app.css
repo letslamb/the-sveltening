@@ -6,10 +6,22 @@
 
 :root {
   font-size: calc(1rem + 0.5vw);
+  --ratio: 1.5;
+  --s-5: calc(var(--s0)/var(--ratio)/var(--ratio)/var(--ratio)/var(--ratio)/var(--ratio));
+  --s-4: calc(var(--s0)/var(--ratio)/var(--ratio)/var(--ratio)/var(--ratio));
+  --s-3: calc(var(--s0)/var(--ratio)/var(--ratio)/var(--ratio));
+  --s-2: calc(var(--s0)/var(--ratio)/var(--ratio));
+  --s-1: calc(var(--s0)/var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0)*var(--ratio));
+  --s2: calc(var(--s0)*var(--ratio)*var(--ratio));
+  --s3: calc(var(--s0)*var(--ratio)*var(--ratio)*var(--ratio));
+  --s4: calc(var(--s0)*var(--ratio)*var(--ratio)*var(--ratio)*var(--ratio));
+  --s5: calc(var(--s0)*var(--ratio)*var(--ratio)*var(--ratio)*var(--ratio)*var(--ratio));
 }
 
 body {
-  background-color: rgb(169, 200, 228);
+  background-color: #a9c8e4;
 }
 
 html,
@@ -148,12 +160,27 @@ figure {
   line-height: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
+button {
+  color: white;
+  background-color: #000;
+  border-radius: 0.25rem;
+  padding: 1em 1.5em;
+}
+
 h1 {
   font-size: 4rem;
 }
 
 h2 {
   font-size: 3rem;
+}
+
+.flex {
+  display: flex;
 }
 
 @media (min-width: 480px) {
