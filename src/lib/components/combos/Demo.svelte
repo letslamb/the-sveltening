@@ -1,9 +1,9 @@
 <script>
   import ImageLoader from '$lib/components/combos/ImageLoader.svelte'
-  import Kitty from '$static/kitty.jpeg?w=200;400;700&format=webp;jpg&meta'
-  import staticCat from '$static/kitty.jpeg'
+  import Kitty from '$static/kitty.jpg?w=200;400;700&format=webp;jpg&meta'
+  import staticCat from '$static/kitty.jpg'
 
-  console.log(`Unfiltered vite-imagetools object: ${JSON.stringify(Kitty, null, " ")}`)
+  // console.log(`Unfiltered vite-imagetools object: ${JSON.stringify(Kitty, null, " ")}`)
   // this functions strips image metadata, leaving only what we need
   function filterArrayOfImageObjects (arrayOfImageObjects) {
     const newArr = []
@@ -24,9 +24,9 @@
 
   const kittyImages = filterArrayOfImageObjects(Kitty)
 
-  console.log(`after calling 'filterArrayOfImageObjects': ${JSON.stringify(kittyImages, null, " ")}`)
+  // console.log(`after calling 'filterArrayOfImageObjects': ${JSON.stringify(kittyImages, null, " ")}`)
 
-  console.log(`static image imported w/ metadata only: ${JSON.stringify(staticCat, null, " ")}`)
+  // console.log(`static image imported w/ metadata only: ${JSON.stringify(staticCat, null, " ")}`)
 </script>
 
 <!-- <ImageLoader processedImages={kittyImages} /> -->

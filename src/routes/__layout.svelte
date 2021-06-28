@@ -1,17 +1,16 @@
 <script>
   import '../app.css'
 
-  import Hamburger from '$lib/components/presentation-primitives/HamburgerMenu.svelte'
-  import ImageLoader from '$lib/components/combos/ImageLoader.svelte'
-  import Kitty from '$static/kitty.jpeg?w=200;400;&format=webp;jpg;&meta'
+  import Hamburger from '$lib/components/primitives/utils/HamburgerMenu.svelte'
+  import Kitty from '$static/kitty.jpg?w=200;400;&format=webp;jpg;&meta'
 </script>
 
 <header class="first">
-  <figure>
+  <!-- <figure>
     <ImageLoader 
       processedImages={Kitty}
     />
-  </figure>
+  </figure> -->
   <Hamburger
     --button-padding="0.4rem 0.4rem 0.2rem 0.4rem"
   />
@@ -25,13 +24,15 @@
 
 </footer>
 
+
 <style>
 
-header {
-    background-color: green;
+  header {
+    background-color: #fff;
+    border-bottom: 2px solid #000;
     padding: 1.5rem 1.5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   figure {
@@ -39,7 +40,7 @@ header {
   }
 
   header.first {
-    --button-bg-color: blue;
+    /* --button-bg-color: blue; */
     --button-margin: 0 0 0 auto;
     --ul-bg-color: white;
     --link-padding: 1rem 0.4rem;
