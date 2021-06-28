@@ -1,5 +1,5 @@
 <script>
-  import Kitty from '$static/kitty.jpeg?w=400;800;1200&format=webp;jpeg&meta'
+  import Kitty from '$static/kitty.jpg?w=400;800;1200&format=webp;jpg&meta'
   import Stack from '$lib/components/primitives/layout/Stack.svelte'
   import Switcher from '$lib/components/primitives/layout/Switcher.svelte'
   import Center from '$lib/components/primitives/layout/Center.svelte'
@@ -11,7 +11,7 @@
   import Grid from '$lib/components/primitives/layout/Grid.svelte'
   import Reel from '$lib/components/primitives/layout/Reel.svelte'
   import Frame from '$lib/components/primitives/layout/Frame.svelte'
-  import KittyRawImage from '$static/kitty.jpeg'
+  import KittyRawImage from '$static/kitty.jpg'
   import JarritosRawImage from '$static/jarritos-mexican-soda.jpg'
   import Image from '$lib/components/primitives/layout/Image.svelte'
   import Imposter from '$lib/components/primitives/layout/Imposter.svelte'

@@ -1,10 +1,20 @@
 <script>
-  import TestImages from '$lib/components/combos/Demo.svelte'
-  import TestHamburger from '$lib/components/layout-primitives/Demo.svelte'
+  // import TestImages from '$lib/components/combos/Demo.svelte'
+  import TestLayoutPrimitives from '$lib/components/primitives/Demo.svelte'
+  import TestModal from '$lib/components/combos/modal/ModalWithButton.svelte'
+  import TestSecondModal from '$lib/components/combos/modal/Modal.svelte'
+
 </script>
 
+<!-- <TestModal /> -->
 
-<TestHamburger />
+<!-- <div style="position:relative;">
+  <TestSecondModal />
+</div> -->
 
-<TestImages />
+<TestLayoutPrimitives />
+
+
+
+<!-- <TestImages /> -->
 
