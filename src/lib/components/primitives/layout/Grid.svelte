@@ -1,21 +1,45 @@
 <script>
+
+  /**
+   * @type {string}
+   * set an optional class name for the top-level element of this component to enable 
+   * scoped styling of each component instance from outside (in parent components or pages)
+  */
+  export let wrapperClass
+  /**
+   * @type {string}
+   * control the parent of slot content by choosing 'div', 'ul', 'ol', or 'dl'
+  */
   export let wrapperElement
+  
 </script>
 
 {#if wrapperElement === 'ul'}
-  <ul class="grid">
+  <ul class={wrapperClass
+    ? `grid ${wrapperClass}`
+    : "grid"
+  }>
     <slot />
   </ul>
 {:else if wrapperElement === 'ol'}
-  <ol class="grid">
+  <ol class={wrapperClass
+    ? `grid ${wrapperClass}`
+    : "grid"
+  }>
     <slot />
   </ol>
 {:else if wrapperElement === 'dl'}
-  <dl class="grid">
+  <dl class={wrapperClass
+    ? `grid ${wrapperClass}`
+    : "grid"
+  }>
     <slot />
   </dl>
 {:else if wrapperElement === 'div'}
-  <div class="grid">
+  <div class={wrapperClass
+    ? `grid ${wrapperClass}`
+    : "grid"
+  }>
     <slot />
   </div>
 {/if}
@@ -24,17 +48,16 @@
 
   /* 
     Exposed as CSS variables:
-      --grid-gap
-      --grid-list-style
+      --space
   */
 
   .grid {
     display: grid;
-    grid-gap: var(--grid-gap, 1rem);
+    grid-gap: var(--space, 1rem);
   }
 
   ul, ol, dl {
-    list-style: var(--grid-list-style, none)
+    list-style: none
   }
 
   @supports (width: min(250px, 100%)) {

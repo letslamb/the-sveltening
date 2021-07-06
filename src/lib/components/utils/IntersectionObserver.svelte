@@ -1,11 +1,16 @@
 <script>
   import { onMount } from "svelte";
 
+  /**
+   * @type {boolean}
+   * whether you want the IntersectionObserver to only detect the element the 
+   * first time it scrolls into view, or every time
+  */
   export let once = false;
-  export let top = 0;
-  export let bottom = 0;
-  export let left = 0;
-  export let right = 0;
+  let top = 0;
+  let bottom = 0;
+  let left = 0;
+  let right = 0;
 
   let intersecting = false;
   let container;

@@ -1,21 +1,50 @@
 <script>
+
+  /**
+   * @type {string}
+   * set an optional class name for the top-level element of this component to enable 
+   * scoped styling of each component instance from outside (in parent components or pages)
+  */
+  export let wrapperClass
+  
+  /**
+   * @type {string}
+   * choose the parent element for this component's slot contents:
+   *  - ul
+   *  - ol
+   *  - dl
+   *  - div
+  */
   export let wrapperElement
+
 </script>
 
 {#if wrapperElement === "ul"}
-  <ul class="cluster">
+  <ul class={wrapperClass
+    ? `cluster ${wrapperClass}`
+    : "cluster"
+  }>
     <slot />
   </ul>
 {:else if wrapperElement === "ol"}
-  <ol class="cluster">
+  <ol class={wrapperClass
+    ? `cluster ${wrapperClass}`
+    : "cluster"
+  }>
     <slot />
   </ol>
 {:else if wrapperElement === "dl"}
-  <dl class="cluster">
+  <dl class={wrapperClass
+    ? `cluster ${wrapperClass}`
+    : "cluster"
+  }>
     <slot />
   </dl>
 {:else if wrapperElement === 'div'}
-  <div class="cluster">
+  <div class={wrapperClass
+    ? `cluster ${wrapperClass}`
+    : "cluster"
+  }>
     <slot />
   </div>
 {/if}
@@ -23,22 +52,19 @@
 <style>
   /* 
     Exposed as CSS variables:
-      --cluster-gap
-      --cluster-justify
-      --cluster-align
-      --list-style
+      --space
   */
 
   .cluster {
     display: flex;
     flex-wrap: wrap;
-    justify-content: var(--cluster-justify, flex-start);
-    align-items: var(--cluster-align, center);
-    gap: var(--cluster-gap, 1rem);
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space, 1rem);
   }
 
   ul, ol, dl {
-    list-style: var(--cluster-list-style, none)
+    list-style: none
   }
 
 </style>

@@ -1,7 +1,7 @@
 <script>
   import '../app.css'
 
-  import Hamburger from '$lib/components/primitives/utils/HamburgerMenu.svelte'
+  import Hamburger from '$lib/components/utils/HamburgerMenu.svelte'
   import Kitty from '$static/kitty.jpg?w=200;400;&format=webp;jpg;&meta'
 </script>
 
@@ -11,9 +11,7 @@
       processedImages={Kitty}
     />
   </figure> -->
-  <Hamburger
-    --button-padding="0.4rem 0.4rem 0.2rem 0.4rem"
-  />
+  <Hamburger wrapperClass="test-burger" />
 </header>
 
 <main>
@@ -39,10 +37,19 @@
     max-width: 10rem;
   }
 
-  header.first {
-    /* --button-bg-color: blue; */
-    --button-margin: 0 0 0 auto;
-    --ul-bg-color: white;
-    --link-padding: 1rem 0.4rem;
+  header :global(.test-burger button) {
+    /* background-color: blue; */
+    padding: 0.4rem 0.4rem 0.2rem 0.4rem;
+    margin: 0 0 0 auto;
   }
+
+  header :global(.test-burger ul) {
+    background-color: pink;
+    text-align: center;
+  }
+
+  header :global(.test-burger a) {
+    padding: 1rem 0.4rem;
+  }
+
 </style>

@@ -1,6 +1,7 @@
 <script>
   /**
    * @type {{uniqueId: String, visibleText: String}}
+   * uniqueId is used to tether the visibleText's span to an aria-labelledby attribute for the button
   */
   export let item
   let checkedState = false

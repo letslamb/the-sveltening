@@ -30,7 +30,23 @@
   import Stack from '$lib/components/primitives/layout/Stack.svelte'
   import { onMount } from 'svelte'
 
+  /**
+   * @type {string}
+   * the message you want the modal to display to users
+  */
   export let dialogMessage = "default prompt value from Modal.svelte"
+
+  /**
+   * @type {boolean}
+   * whether to position the element relative to the viewport
+  */
+  export let fixed
+
+  /**
+   * @type {boolean}
+   * allow horizontal scrolling within the modal
+   *  - this prop generally shouldn't be needed, since modals shouldn't have a lot of content
+  */
   export let contain
 
   let dialog
@@ -81,7 +97,7 @@
 </script>
 
 <div class="overlay" bind:this={overlay}>
-  <Imposter bind:imposterWrapperDiv={dialog} --imposter-margin="var(--s0)" {contain}>
+  <Imposter bind:imposterWrapperDiv={dialog} --imposter-margin="var(--s0)" {contain} {fixed}>
     <Stack>
       <p slot="stack-first-item" bind:this={dialogLabel}>{dialogMessage}</p>
       <div slot="stack-second-item" class="modal-buttons">

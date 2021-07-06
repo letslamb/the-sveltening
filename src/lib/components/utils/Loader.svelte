@@ -1,6 +1,6 @@
 <script>
 
-  import IntersectionObserver from '$lib/components/primitives/utils/IntersectionObserver.svelte'
+  import IntersectionObserver from '$lib/components/utils/IntersectionObserver.svelte'
 
 </script>
 

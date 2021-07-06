@@ -17,16 +17,22 @@
   import Imposter from '$lib/components/primitives/layout/Imposter.svelte'
   import Icon from '$lib/components/primitives/layout/Icon.svelte'
   import AccessibilityIcon from '$static/material-icons/accessibility_24px_outlined.svg'
-  import Loader from '$lib/components/primitives/utils/Loader.svelte'
-  import ThemeSwitcher from '$lib/components/primitives/utils/ThemeSwitcher.svelte'
-  import ToggleSection from '$lib/components/primitives/utils/ToggleSection.svelte'
-  import ToggleButton from '$lib/components/primitives/utils/buttons/ToggleButton.svelte'
-  import PlayPauseButton from '$lib/components/primitives/utils/buttons/PlayPauseButton.svelte'
-  import SwitchItems from '$lib/components/primitives/utils/buttons/SwitchItems.svelte'
+  import Loader from '$lib/components/utils/Loader.svelte'
+  import ThemeSwitcher from '$lib/components/utils/ThemeSwitcher.svelte'
+  import ToggleSection from '$lib/components/utils/ToggleSection.svelte'
+  import ToggleButton from '$lib/components/utils/buttons/ToggleButton.svelte'
+  import PlayPauseButton from '$lib/components/utils/buttons/PlayPauseButton.svelte'
+  import SwitchItems from '$lib/components/utils/buttons/SwitchItems.svelte'
   import TabbedInterfacePE from '$lib/components/primitives/presentation/TabbedInterfacePE.svelte'
   import ClickableCard from '$lib/components/combos/segs/ClickableCardSection.svelte'
-  import HeadingTag from '$lib/components/primitives/presentation/HeadingTag.svelte'
-  import Section from '$lib/components/primitives/presentation/Section.svelte'
+  import HeadingTag from '$lib/components/utils/HeadingTag.svelte'
+  import Section from '$lib/components/utils/Section.svelte'
+  import TodoList from '$lib/components/utils/TodoList.svelte'
+  import Table from '$lib/components/primitives/presentation/Table.svelte'
+  import Toggletip from '$lib/components/utils/Toggletip.svelte'
+
+
+
 
 
 
@@ -105,164 +111,143 @@
 
 </script>
 
-<Section>
-  <HeadingTag message={"Hebbo Dair!"} />
+<Center>
   <Section>
-    <HeadingTag message={"this should be an h3"} />
-    <Section>
-      <HeadingTag message={"this should be an h4"} />
-      <Section>
-        <HeadingTag message={"this should be an h5"} />
-        <Section>
-          <HeadingTag message={"this should be an h6"} />
-          <Section>
-            <HeadingTag message={"this should be an h6 also"} />
-          </Section>
-        </Section>
-      </Section>
-
-    </Section>
+    <HeadingTag message={"My Tooltip test"} />
+    <Toggletip wrapperClass={"testing"} />
   </Section>
-</Section>
+</Center>
+
 
 <Section>
-  <HeadingTag message={"this should be an h2"} />
+  <HeadingTag message={"This Section has a table later on"} />
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+  <Center --gutters="var(--s-1)">
+    <Table caption={"My Cat Family"}/>
+  </Center>
 </Section>
 
+<TodoList wrapperClass={"my-todo-list"} />
 
+<Section>
+  <HeadingTag message={`My Headings Test Section`} />
+  <HeadingTag message={`second heading`} />
+  <HeadingTag message={`third heading`} />
+</Section>
 
-<!-- <section class="content-section-wrapper"> -->
+<div class="test-all-layout-primitives">
 
-  <ClickableCard {cardData} />
+  <Section>
 
-  <Box --box-padding="var(--s0)">
-    <Stack>
-      <p slot="stack-first-item">
-        This is a test
-      </p>
-      <PlayPauseButton slot="stack-second-item" />
-        <ul slot="stack-third-item">
+    <ClickableCard wrapperClass="clickable-cards" {cardData} />
+
+    <Box wrapperClass="box-buttons-testing">
+      <Stack>
+        <p>
+          This is a test
+        </p>
+        <PlayPauseButton />
+        <ul>
           {#each items as item}
             <SwitchItems 
               {item}
             />
           {/each}
         </ul>
-    </Stack>
-  </Box>
+      </Stack>
+    </Box>
 
-  <ToggleButton text="Notify by email" --button-focus-color="red"/>
+    <ToggleButton text="Notify by email" --button-focus-color="red" />
 
-  <ToggleSection expanded={true}>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-  </ToggleSection>
-  <ToggleSection headerText={"Services"}>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-  </ToggleSection>
-  <ToggleSection headerText={"Pricing"}>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-  </ToggleSection>
-
-  <ThemeSwitcher />
-
-  <TabbedInterfacePE sectionTitles={testSectionTitles}>
-    <svelte:fragment slot="tabpanel-first">
-      <h2>We Buy Gold!</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
-    </svelte:fragment>
-    <svelte:fragment slot="tabpanel-second">
-      <h2>Hebbo!</h2>
-      <p>THIS IS TAB 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
-    </svelte:fragment>
-    <svelte:fragment slot="tabpanel-third">
-      <h2>Wubby wubby!</h2>
-      <p>THIS IS TAB 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
-    </svelte:fragment>
-    <svelte:fragment slot="tabpanel-fourth">
-      <h2>Yolotron!</h2>
-      <p>THIS IS TAB 4Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
-    </svelte:fragment>
-  </TabbedInterfacePE>
-
-  <Switcher 
-    wrapperElement="ul" 
-    --switcher-measure="var(--measure)" 
-    --box-border="2px solid" 
-    --box-padding="var(--s0)" 
-    --box-text-color="#000" 
-    --box-bg-color="#fff" 
-    --frame-numerator="9" 
-    --frame-denominator="16">
-    <li>
-      <Box>
-        <Stack>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          <h3>$10</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-        </Stack>
-      </Box>
-    </li>
-    <li>
-      <Box>
-        <Stack>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          <h3>$20</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-        </Stack>
-      </Box>
-    </li>
-    <li>
-      <Box>
-        <Stack>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          <h3>$50</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-        </Stack>
-      </Box>
-    </li>
-  </Switcher>
-
-  <Center
-    --center-max-width="50%"
-    --frame-numerator="9" 
-    --frame-denominator="16"
-  >
-    <Stack>
-      <Loader>
-        <Frame>
-          <Image 
-            images={kittyImages}
-            altText={"a grey kitten smiley"}
-          />
-        </Frame>
-      </Loader>
-      <h3>$50</h3>
+    <ToggleSection expanded={true}>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
-    </Stack>
-  </Center>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+    </ToggleSection>
+    <ToggleSection headerText={"Services"}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+    </ToggleSection>
+    <ToggleSection headerText={"Pricing"}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+    </ToggleSection>
 
-  <Sidebar 
-    --frame-numerator="9" 
-    --frame-denominator="16">
-    <aside slot="sidebar-content">
+    <ThemeSwitcher />
+
+    <TabbedInterfacePE sectionTitles={testSectionTitles}>
+      <svelte:fragment slot="tabpanel-first">
+        <HeadingTag message={"We Buy Gold!"} />
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
+      </svelte:fragment>
+      <svelte:fragment slot="tabpanel-second">
+        <HeadingTag message={"Hebbo!"} />
+        <p>THIS IS TAB 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
+      </svelte:fragment>
+      <svelte:fragment slot="tabpanel-third">
+        <HeadingTag message={"Wubby wubby!"} />
+        <p>THIS IS TAB 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
+      </svelte:fragment>
+      <svelte:fragment slot="tabpanel-fourth">
+        <HeadingTag message={"Yolotron"} />
+        <p>THIS IS TAB 4Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. Praesent blandit, neque sed ullamcorper tincidunt, mauris nibh blandit orci, eget vulputate tellus velit eget mi. Aenean id erat ultrices, euismod nibh at, sodales metus. Vivamus pretium enim quis justo aliquam venenatis. Aliquam consectetur ligula vel leo ornare, mattis ornare neque interdum. Proin elementum ornare risus, ut vehicula massa facilisis vitae. Phasellus quis pretium justo, vel iaculis dolor.</p>
+      </svelte:fragment>
+    </TabbedInterfacePE>
+
+    <Switcher 
+      wrapperClass="switcher-testing"
+      wrapperElement="ul" 
+      --measure="var(--measure)"
+      --frame-numerator="9" 
+      --frame-denominator="16">
+      <li>
+        <Box>
+          <Stack>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            <h3>$10</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+          </Stack>
+        </Box>
+      </li>
+      <li>
+        <Box>
+          <Stack>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            <h3>$20</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+          </Stack>
+        </Box>
+      </li>
+      <li>
+        <Box>
+          <Stack>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            <h3>$50</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+          </Stack>
+        </Box>
+      </li>
+    </Switcher>
+
+    <Center
+      --measure="50%"
+      --frame-numerator="9" 
+      --frame-denominator="16"
+    >
       <Stack>
         <Loader>
           <Frame>
@@ -275,33 +260,13 @@
         <h3>$50</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
       </Stack>
-    </aside>
-    <div slot="main-content">
-      <Stack>
-        <Loader>
-          <Frame>
-            <Image 
-              images={jarritosImages}
-              altText={"a young Mexican couple"}
-            />
-          </Frame>
-        </Loader>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-        </p>
-      </Stack>
-    </div> 
-  </Sidebar>
+    </Center>
 
-  <Cover 
-    --cover-padding="0" 
-    --cover-min-height="80vh" 
-    --cluster-justify="space-between" 
-    --cluster-gap="1rem" 
-    --frame-numerator="9" 
-    --frame-denominator="16" 
-    --frame-min-width="10rem" >
-      <Cluster wrapperElement="ul">
-        <li>
+    <Sidebar 
+      --frame-numerator="9" 
+      --frame-denominator="16">
+      <aside slot="sidebar-content">
+        <Stack>
           <Loader>
             <Frame>
               <Image 
@@ -310,9 +275,44 @@
               />
             </Frame>
           </Loader>
+          <h3>$50</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+        </Stack>
+      </aside>
+      <div slot="main-content">
+        <Stack>
+          <Loader>
+            <Frame>
+              <Image 
+                images={jarritosImages}
+                altText={"a young Mexican couple"}
+              />
+            </Frame>
+          </Loader>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+          </p>
+        </Stack>
+      </div> 
+    </Sidebar>
+
+    <Cover 
+      wrapperClass="test-cover"
+      --frame-numerator="9" 
+      --frame-denominator="16" 
+    >
+      <Cluster wrapperElement="ul" wrapperClass="test-outer-cluster">
+        <li>
+          <Loader>
+            <Frame wrapperClass="test-cluster-top-left-image">
+              <Image 
+                images={kittyImages}
+                altText={"a grey kitten smiley"}
+              />
+            </Frame>
+          </Loader>
         </li>
         <li>
-          <Cluster --cluster-justify="flex-start" wrapperElement="ul">
+          <Cluster wrapperClass="test-nav-cluster" wrapperElement="ul">
             <li>
               <a href="/home">Home</a>
             </li>
@@ -332,217 +332,250 @@
       <button>
         Learn More
       </button>
-  </Cover>
+    </Cover>
 
-  <Grid 
-    wrapperElement="ul" 
-    --frame-numerator="1" 
-    --frame-denominator="1" 
-    --box-padding="var(--s0)" 
-    --box-border="2px solid" 
-    --box-text-color="#000" 
-    --box-bg-color="#fff"
-  >
-    <li>
-      <Box>
-        <Stack>
-          <Loader>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-        </Stack>
-      </Box>
-    </li>
-    <li>
-      <Box>
-        <Stack>
-          <Loader>
-            <Frame>
-              <Image 
-                images={jarritosImages}
-                altText={"a young Mexican couple"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-        </Stack>
-      </Box>
-    </li>
-    <li>
-      <Box>
-        <Stack>
-          <Loader>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-        </Stack>
-      </Box>
-    </li>
-    <li>
-      <Box>
-        <Stack>
-          <Loader>
-            <Frame>
-              <Image 
-                images={jarritosImages}
-                altText={"a young Mexican couple"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-        </Stack>
-      </Box>
-    </li>
-    <li>
-      <Box>
-        <Stack>
-          <Loader>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-        </Stack>
-      </Box>
-    </li>
-  </Grid>
+    <Grid 
+      wrapperClass="test-grid"
+      wrapperElement="ul" 
+      --frame-numerator="1" 
+      --frame-denominator="1" 
+    >
+      <li>
+        <Box wrapperClass="box-grid-testing">
+          <Stack>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+          </Stack>
+        </Box>
+      </li>
+      <li>
+        <Box>
+          <Stack>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={jarritosImages}
+                  altText={"a young Mexican couple"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+          </Stack>
+        </Box>
+      </li>
+      <li>
+        <Box>
+          <Stack>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+          </Stack>
+        </Box>
+      </li>
+      <li>
+        <Box>
+          <Stack>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={jarritosImages}
+                  altText={"a young Mexican couple"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+          </Stack>
+        </Box>
+      </li>
+      <li>
+        <Box>
+          <Stack>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+          </Stack>
+        </Box>
+      </li>
+    </Grid>
 
-  <Reel visualInstructions={true} --box-border="2px solid" --box-padding="var(--s0)" --box-text-color="#000" --box-bg-color="#fff" --frame-numerator="9" --frame-denominator="16">
-    <div>
-      <Box>
-        <Stack splitAfter={2}>
-          <Loader>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-          <p>testing</p>
-        </Stack>
-      </Box>
-    </div>
-    <div>
-      <Box>
-        <Stack>
-          <Loader>
-            <Frame>
-              <Image 
-                images={jarritosImages}
-                altText={"a young Mexican couple"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-          <p>testing</p>
-        </Stack>
-      </Box>
-    </div>
-    <div>
-      <Box --box-display="flex" --box-min-height="100%">
-        <Stack splitAfter={2}>
-          <Loader>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus  
-          </p>
-          <p>testing</p>
-        </Stack>
-      </Box>
-    </div>
-    <div>
-      <Box>
-        <Stack splitAfter={2}>
-          <Loader>
-            <Frame>
-              <Image 
-                images={jarritosImages}
-                altText={"a young Mexican couple"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-          <p>testing</p>
-  
-        </Stack>
-      </Box>
-    </div>
-    <div>
-      <Box>
-        <Stack splitAfter={2}>
-          <Loader>
-            <Frame>
-              <Image 
-                images={kittyImages}
-                altText={"a grey kitten smiley"}
-              />
-            </Frame>
-          </Loader>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
-          </p>
-          <p>testing</p>
-        </Stack>
-      </Box>
-    </div>
-  </Reel>
+    <Reel wrapperClass="test-reel" visualInstructions={true} --frame-numerator="9" --frame-denominator="16">
+      <div>
+        <Box>
+          <Stack splitAfter={2}>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+            <p>testing</p>
+          </Stack>
+        </Box>
+      </div>
+      <div>
+        <Box>
+          <Stack>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={jarritosImages}
+                  altText={"a young Mexican couple"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+            <p>testing</p>
+          </Stack>
+        </Box>
+      </div>
+      <div>
+        <Box wrapperClass="test-split-after-box">
+          <Stack splitAfter={2}>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus  
+            </p>
+            <p>testing</p>
+          </Stack>
+        </Box>
+      </div>
+      <div>
+        <Box>
+          <Stack splitAfter={2}>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={jarritosImages}
+                  altText={"a young Mexican couple"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+            <p>testing</p>
+    
+          </Stack>
+        </Box>
+      </div>
+      <div>
+        <Box>
+          <Stack splitAfter={2}>
+            <Loader>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            </Loader>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum eleifend, metus at vulputate ornare, justo est maximus leo, vitae ultrices magna purus vehicula risus. 
+            </p>
+            <p>testing</p>
+          </Stack>
+        </Box>
+      </div>
+    </Reel>
 
-  <div class="icon-test">
-    <Icon iconText={"Accessibility"} --space="0.5em">
-      <svg id="a11y" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="accessibility_24px">
-        <path id="icon/action/accessibility_24px" fill-rule="evenodd" clip-rule="evenodd" d="M14 4C14 2.89999 13.1 2 12 2C10.9 2 10 2.89999 10 4C10 5.10001 10.9 6 12 6C13.1 6 14 5.10001 14 4ZM15 9H21V7H3V9H9V22H11V16H13V22H15V9Z" fill="black" fill-opacity="0.54"/>
-        </g>
-        </svg>
-    </Icon>
-  </div>
-  
+    <div class="icon-test">
+      <Icon iconText={"Accessibility"} --space="0.5em">
+        <svg id="a11y" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="accessibility_24px">
+          <path id="icon/action/accessibility_24px" fill-rule="evenodd" clip-rule="evenodd" d="M14 4C14 2.89999 13.1 2 12 2C10.9 2 10 2.89999 10 4C10 5.10001 10.9 6 12 6C13.1 6 14 5.10001 14 4ZM15 9H21V7H3V9H9V22H11V16H13V22H15V9Z" fill="black" fill-opacity="0.54"/>
+          </g>
+          </svg>
+      </Icon>
+    </div>
+    
 
-<!-- </section> -->
+  </Section>
+</div>
+
 
 <style>
 
-  section {
+  .test-all-layout-primitives :global(section) {
     --measure: 75ch;
-    /* --sidebar-width: 20rem; */
+    line-height: 1.5;
   }
+
+  .test-all-layout-primitives :global(.box-buttons-testing) {
+    padding: var(--s0);
+  }
+
+  .test-all-layout-primitives :global(.box) {
+    --color: #000;
+    --background-color: pink;
+    border: 2px solid;
+    padding: var(--s0);
+  }
+
+  .test-all-layout-primitives :global(.wrapper .box) {
+    padding: 0;
+  }
+
+  .test-all-layout-primitives :global(.test-cover) {
+    --space: var(--s0);
+    padding: 0;
+    min-height: 80vw;
+  }
+
+  .test-all-layout-primitives :global(.test-cover .test-outer-cluster) {
+    justify-content: space-between;
+  }
+
+  .test-all-layout-primitives :global(.test-cluster-top-left-image) {
+    min-width: 10rem;
+  }
+
+  .test-all-layout-primitives :global(.test-split-after-box) {
+    display: flex;
+    min-height: 100%;
+  }
+
+  .test-all-layout-primitives :global(.test-reel [aria-labelledby="reel-label"]:focus) {
+    outline: 4px solid red;
+  }
+
 
   h3 {
     font-size: 150%;
     text-align: center;
   }
-
-  /* .content-section-wrapper {
-    padding: 1.5rem;
-    line-height: 1.5;
-  } */
 
   .icon-test {
     margin-top: 2rem;
