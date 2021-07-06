@@ -1,4 +1,11 @@
 <script>
+
+  /**
+   * @type {string}
+   * set an optional class name for the top-level element of this component to enable 
+   * scoped styling of each component instance from outside (in parent components or pages)
+  */
+  export let wrapperClass
   /**
    * @type {string}
    * configures which side of the screen you want the sidebar to be on vs. the main content
@@ -6,7 +13,10 @@
   export let sidebar = "left"
 </script>
 
-<div class="with-sidebar">
+<div class={wrapperClass
+  ? `with-sidebar ${wrapperClass}`
+  : "with-sidebar"
+} >
   <div class:mainContent={sidebar !== "left"}>
     <slot name="sidebar-content" />
   </div>

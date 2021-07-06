@@ -1,6 +1,19 @@
 <script>
 
+  /**
+   * @type {string}
+   * set an optional class name for the top-level element of this component to enable 
+   * scoped styling of each component instance from outside (in parent components or pages)
+  */
+  export let wrapperClass
+  /**
+   * @type {Array.<{format: string, width: (string|number), height: (string|number), src: string}>}
+   * an array of processed image objects for responsive images
+  */
   export let images
+  /**
+   * @type {string}
+  */
   export let altText
 
 </script>
@@ -13,6 +26,7 @@
   src={images[images.length - 1].src}
   sizes="50vw"
   alt={altText}
+  class={wrapperClass}
 >
 
 <style>

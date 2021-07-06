@@ -4,6 +4,10 @@
   import { browser } from '$app/env'
   import { onMount } from 'svelte'
 
+  /**
+   * @type {Array<string>}
+   * words or short phrases to appear as the titles of each tab in the Tabbed Interface UI
+  */
   export let sectionTitles
 
   let tabbed

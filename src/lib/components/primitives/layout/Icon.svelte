@@ -1,9 +1,22 @@
 <script>
+
+  /**
+   * @type {string}
+   * set an optional class name for the top-level element of this component to enable 
+   * scoped styling of each component instance from outside (in parent components or pages)
+  */
+  export let wrapperClass
+  /**
+   * @type {string}
+   * the text you want to accompany the icon. Should be descriptive & contextualize the icon
+  */
   export let iconText
-  // TODO ^ does this path *need* to have a leading / ?
 </script>
 
-<span class="with-icon">
+<span class={wrapperClass
+  ? `with-icon ${wrapperClass}`
+  : "with-icon"
+}>
   <slot />
   {iconText}
 </span>

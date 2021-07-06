@@ -1,9 +1,35 @@
 <script>
-  import Reel from '$lib/components/primitives/layout/Reel.svelte'
   import Frame from '$lib/components/primitives/layout/Frame.svelte'
-  import NewImage from '$lib/components/primitives/layout/Image.svelte'
+  import Image from '$lib/components/primitives/layout/Image.svelte'
   import { Carousel } from './carousel.js'
   import { onMount } from 'svelte'
+
+  /**
+   * @type {string}
+   * set an optional class name for the top-level element of this component to enable 
+   * scoped styling of each component instance from outside (in parent components or pages)
+  */
+  export let wrapperClass
+
+  /**
+   * @typedef {Array.<{format: string, width: (string|number), height: (string|number), src: string}>} ImageObjects
+   * @type {Array.<{arr: ImageObjects, altText: string}>}
+   * an array of carousel image objects, each with the following properties:
+   *  - arr: contains an array of procesed image objects to enable responsive images, 
+   * each with these properties
+   *    - format
+   *    - width
+   *    - height
+   *    - src
+   *  - altText: to describe the image
+  */
+  export let images
+
+  /**
+   * @type {string}
+   * an aria-label attribute for the entire carousel
+  */
+  export let carouselAriaLabel = "My favorite unsplash images"
 
   /* Initialize Carousel Tablists */
 
@@ -25,17 +51,12 @@
     }, false);
   })
 
-
-
-  export let images
-  // export let alts
-
-  export let carouselAriaLabel = "My favorite unsplash images"
-
 </script>
 
 <section id="myCarousel"
-  class="carousel"
+  class={wrapperClass
+  ? `carousel ${wrapperClass}`
+  : "carousel"}
   aria-roledescription="carousel"
   aria-label={carouselAriaLabel}
 >
@@ -124,8 +145,8 @@
             aria-label={`${i + 1} of 5`}> <!-- <== need to make this dynamic-->
           <div class="carousel-image">
             <a href="#">
-              <Frame --n="1" --d="1">
-                <NewImage 
+              <Frame --frame-numerator="1" --frame-denominator="1">
+                <Image 
                   images={image.arr}
                   altText={image.altText}
                 />

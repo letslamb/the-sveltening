@@ -2,7 +2,7 @@
   import Box from '$lib/components/primitives/layout/Box.svelte'
   import Center from '$lib/components/primitives/layout/Center.svelte'
   import Stack from '$lib/components/primitives/layout/Stack.svelte'
-  import Loader from '$lib/components/primitives/utils/Loader.svelte'
+  import Loader from '$lib/components/utils/Loader.svelte'
   import Frame from '$lib/components/primitives/layout/Frame.svelte'
   import Image from '$lib/components/primitives/layout/Image.svelte'
   import Switcher from '$lib/components/primitives/layout/Switcher.svelte'
@@ -41,20 +41,11 @@
     </Stack>
   </div>
 
-  <Center --center-padding-left="var(--s1)" --center-padding-right="var(--s1)" --center-max-width="60rem">
+  <Center>
     <Switcher 
       wrapperElement="ul"
-      --switcher-gap="var(--s0)"
       --frame-numerator="9"
       --frame-denominator="16"
-      --box-border="2px solid"
-      --box-text-color="#000"
-      --box-bg-color="#fff"
-      --box-border-radius="20px"
-      --box-min-height="calc(var(--s5)*3)"
-      --box-display="flex"
-      --stack-spacing="var(--s0)"
-      --image-border-radius="17px 17px 0 0"
     >
       {#each cardData as card}
         <li 
@@ -73,7 +64,7 @@
               </div>
               <Loader>
                 <Frame>
-                  <Image 
+                  <Image wrapperClass="clickable-cards-images"
                     images={card.image}
                     altText={card.altText}
                   />
@@ -99,17 +90,35 @@
   }
 
   /* need to remove margin-top due to a11y hack that rearranges the elements of a <Stack> */
-  :global(.text~*) {
+  .wrapper :global(.text~*) {
     margin-top: 0;
   }
 
-  :global(.clickable-card-class img) {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
+  .wrapper :global(.center) {
+    --gutters: var(--s0);
+    /* --measure: 60rem; */
   }
 
-  li {
+  .wrapper :global(.box) {
+    display: flex;
+  }
+
+  .wrapper :global(.stack) {
+    width: 100%;
+  }
+
+
+  .wrapper :global(.clickable-card-class img) {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1rem));
+    border-radius: 17px 17px 0 0;
+  }
+
+  .wrapper li {
     list-style: none;
-    border-radius: var(--box-border-radius);
+  }
+
+  .wrapper li, .wrapper :global(.box) {
+    border-radius: 20px;
   }
 
   li:hover {
