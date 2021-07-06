@@ -1,10 +1,10 @@
 <script>
   import Carousel from '$lib/components/combos/carousel/Carousel.svelte'
-  import Kitty from '$static/kitty.jpeg?w=400;800;1200&format=webp;jpeg&meta'
+  import Kitty from '$static/kitty.jpg?w=400;800;1200&format=webp;jpg&meta'
   import Jarritos from '$static/jarritos-mexican-soda.jpg?w=400;800;1200&format=webp;jpg&meta'
   import FlowerBasket from '$static/flowerbasket.jpg?w=400;800;1200&format=webp;jpg&meta'
   import Graffiti from '$static/graffiti.jpg?w=400;800;1200&format=webp;jpg&meta'
-  import Couple from '$static/lightsaber-couple.jpeg?w=400;800;1200&format=webp;jpeg&meta'
+  import Couple from '$static/lightsaber-couple.jpg?w=400;800;1200&format=webp;jpg&meta'
 
   function filterArrayOfImageObjects (arrayOfImageObjects) {
     const newArr = []
