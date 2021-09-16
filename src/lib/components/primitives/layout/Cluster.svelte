@@ -58,9 +58,9 @@
   .cluster {
     display: flex;
     flex-wrap: wrap;
+    gap: var(--space, 1rem);
     justify-content: flex-start;
     align-items: center;
-    gap: var(--space, 1rem);
   }
 
   ul, ol, dl {
