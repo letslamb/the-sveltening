@@ -1,8 +1,6 @@
 <script>
-
   import { getContext } from 'svelte'
-  import { browser } from '$app/env'
-
+  import { headingLevel } from '$lib/js/constants'
   /**
    * @type {string}
    * set an optional class name for the top-level element of this component to enable 
@@ -19,13 +17,14 @@
   let id
   let level
 
-  if (getContext('headingLevel')) {
-    level = getContext('headingLevel')
-    level = Math.min(level, 6)
+  if (typeof getContext(headingLevel) === 'number') {
+    console.log(`HERE'S THE HEADING LEVEL CONTEXT: ${getContext(headingLevel)}`)
+    level = Math.min(getContext(headingLevel), 6)
+    // level = Math.min(level, 6)
   } else {
     level = 1
   }
-
+  
   const render = () => {
     id = `h-${Math.floor((new Date() * Math.random()))}`
     return `
@@ -37,20 +36,6 @@
     </h${level}>
   `
   }
-
 </script>
 
-<!-- <noscript>
-  {@html `
-    <h${level} 
-      id="h-${Math.floor((new Date() * Math.random()))}"
-      ${wrapperClass ? `class=${wrapperClass}` : ''}
-    >
-      ${message}
-    </h${level}>
-  `}
-</noscript> -->
-
-<!-- {#if browser} -->
-  {@html render()}
-<!-- {/if} -->
+{@html render()}
