@@ -1,6 +1,6 @@
 <script>
   import { setContext, getContext } from 'svelte'
-  import { onMount } from 'svelte'
+  import { headingLevel } from '$lib/js/constants'
   import { enhanceSection } from '$lib/js/actions.js'
 
   /**
@@ -11,15 +11,13 @@
   export let wrapperClass
   let level
 
-  if (getContext('headingLevel')) {
-    level = getContext('headingLevel') + 1
-    setContext('headingLevel', level)
+  if (typeof getContext(headingLevel) === 'number') {
+    level = getContext(headingLevel) + 1
+    setContext(headingLevel, level)
   } else {
-    level = 2
-    setContext('headingLevel', level)
+    level = 1
+    setContext(headingLevel, level)
   }
-
-
 
 </script>
 
