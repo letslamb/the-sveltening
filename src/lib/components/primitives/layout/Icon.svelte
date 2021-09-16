@@ -6,19 +6,36 @@
    * scoped styling of each component instance from outside (in parent components or pages)
   */
   export let wrapperClass
+
   /**
    * @type {string}
-   * the text you want to accompany the icon. Should be descriptive & contextualize the icon
+   * the ID attribute (including '#') of the icon you want to pull from the sprite
   */
-  export let iconText
+  export let iconId
+
+  /**
+   * @type {string}
+   * including this prop will represent the enclosing span as an image with role="img" and aria-label={label}.
+   * this prop is used when there is no accompanying visible label text slotted into the component, 
+   * in order to ensure that it has an accessible name.
+  */
+  export let label
+
 </script>
 
 <span class={wrapperClass
   ? `with-icon ${wrapperClass}`
   : "with-icon"
-}>
-  <slot />
-  {iconText}
+}
+aria-label={label ? label : null}
+role={label ? 'img' : null}
+>
+  <svg class="icon">
+    <use href={`${iconId}`}></use>
+  </svg>
+  {#if !label}
+    <slot />
+  {/if}
 </span>
 
 <style>
@@ -26,9 +43,11 @@
       --space
   */
 
-  :global(svg) {
+  .icon {
     width: 0.75em;
+    width: 1cap;
     height: 0.75em;
+    height: 1cap;
   }
 
   .with-icon {
@@ -36,7 +55,8 @@
     align-items: baseline;
   }
 
-  :global(.with-icon svg) {
+  .with-icon .icon {
     margin-inline-end: var(--space, 1rem);
   }
+
 </style>
