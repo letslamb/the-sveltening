@@ -15,8 +15,8 @@
   import JarritosRawImage from '$static/jarritos-mexican-soda.jpg'
   import Image from '$lib/components/primitives/layout/Image.svelte'
   import Imposter from '$lib/components/primitives/layout/Imposter.svelte'
-  import Icon from '$lib/components/primitives/layout/Icon.svelte'
-  import AccessibilityIcon from '$static/material-icons/accessibility_24px_outlined.svg'
+  // import Icon from '$lib/components/primitives/layout/Icon.svelte'
+  // import AccessibilityIcon from '$static/material-icons/accessibility_24px_outlined.svg'
   import Loader from '$lib/components/utils/Loader.svelte'
   import ThemeSwitcher from '$lib/components/utils/ThemeSwitcher.svelte'
   import ToggleSection from '$lib/components/utils/ToggleSection.svelte'
@@ -30,6 +30,7 @@
   import TodoList from '$lib/components/utils/TodoList.svelte'
   import Table from '$lib/components/primitives/presentation/Table.svelte'
   import Toggletip from '$lib/components/utils/Toggletip.svelte'
+  import Pug from '$static/pug.jpg?w=400;800;1200&format=jpg&meta'
 
 
 
@@ -37,7 +38,7 @@
 
 
 
-  console.log(AccessibilityIcon)
+  // console.log(AccessibilityIcon)
 
 
 
@@ -141,6 +142,9 @@
 
     <ClickableCard wrapperClass="clickable-cards" {cardData} />
 
+    <Center --measure="75ch">
+
+    </Center>
     <Box wrapperClass="box-buttons-testing">
       <Stack>
         <p>
@@ -196,7 +200,7 @@
     <Switcher 
       wrapperClass="switcher-testing"
       wrapperElement="ul" 
-      --measure="var(--measure)"
+      --measure="60ch"
       --frame-numerator="9" 
       --frame-denominator="16">
       <li>
@@ -241,6 +245,20 @@
           </Stack>
         </Box>
       </li>
+      <li>
+        <Box>
+          <Stack>
+              <Frame>
+                <Image 
+                  images={kittyImages}
+                  altText={"a grey kitten smiley"}
+                />
+              </Frame>
+            <h3>$50</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus fringilla velit, eu pulvinar justo mattis eget. Phasellus quis neque at ipsum finibus pretium eu non leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. You know what I'm sayin'?</p>
+          </Stack>
+        </Box>
+      </li>
     </Switcher>
 
     <Center
@@ -252,7 +270,7 @@
         <Loader>
           <Frame>
             <Image 
-              images={kittyImages}
+              images={Pug}
               altText={"a grey kitten smiley"}
             />
           </Frame>
@@ -297,13 +315,15 @@
 
     <Cover 
       wrapperClass="test-cover"
-      --frame-numerator="9" 
-      --frame-denominator="16" 
     >
       <Cluster wrapperElement="ul" wrapperClass="test-outer-cluster">
         <li>
           <Loader>
-            <Frame wrapperClass="test-cluster-top-left-image">
+            <Frame 
+              wrapperClass="test-cluster-top-left-image"
+              --numerator="9" 
+              --denominator="16" 
+            >
               <Image 
                 images={kittyImages}
                 altText={"a grey kitten smiley"}
@@ -511,7 +531,7 @@
       </div>
     </Reel>
 
-    <div class="icon-test">
+    <!-- <div class="icon-test">
       <Icon iconText={"Accessibility"} --space="0.5em">
         <svg id="a11y" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="accessibility_24px">
@@ -519,7 +539,7 @@
           </g>
           </svg>
       </Icon>
-    </div>
+    </div> -->
     
 
   </Section>
