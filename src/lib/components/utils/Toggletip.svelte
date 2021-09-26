@@ -64,7 +64,7 @@
     display: inline-block;
   }
 
-  :global(.toggletip-bubble) {
+  span:global(.toggletip-bubble) {
     display: inline-block;
     position: absolute;
     left: 100%;
