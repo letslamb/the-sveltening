@@ -1,6 +1,6 @@
 <script>
-  import Frame from '$lib/components/primitives/layout/Frame.svelte'
-  import Image from '$lib/components/primitives/layout/Image.svelte'
+  import Frame from '$lib/components/layout-primitives/Frame.svelte'
+  import Image from '$lib/components/layout-primitives/Image.svelte'
   import { Carousel } from './carousel.js'
   import { onMount } from 'svelte'
 

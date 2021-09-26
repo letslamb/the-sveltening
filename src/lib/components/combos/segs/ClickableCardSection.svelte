@@ -1,11 +1,10 @@
 <script>
-  import Box from '$lib/components/primitives/layout/Box.svelte'
-  import Center from '$lib/components/primitives/layout/Center.svelte'
-  import Stack from '$lib/components/primitives/layout/Stack.svelte'
-  import Loader from '$lib/components/utils/Loader.svelte'
-  import Frame from '$lib/components/primitives/layout/Frame.svelte'
-  import Image from '$lib/components/primitives/layout/Image.svelte'
-  import Switcher from '$lib/components/primitives/layout/Switcher.svelte'
+  import Box from '$lib/components/layout-primitives/Box.svelte'
+  import Center from '$lib/components/layout-primitives/Center.svelte'
+  import Stack from '$lib/components/layout-primitives/Stack.svelte'
+  import Frame from '$lib/components/layout-primitives/Frame.svelte'
+  import Image from '$lib/components/layout-primitives/Image.svelte'
+  import Switcher from '$lib/components/layout-primitives/Switcher.svelte'
 
 
   import { onMount } from 'svelte'
@@ -62,14 +61,12 @@
                   <small>{card.tinyText}</small>
                 </Stack>
               </div>
-              <Loader>
-                <Frame>
-                  <Image wrapperClass="clickable-cards-images"
-                    images={card.image}
-                    altText={card.altText}
-                  />
-                </Frame>
-              </Loader>
+              <Frame lazy={true}>
+                <Image wrapperClass="clickable-cards-images"
+                  images={card.image}
+                  altText={card.altText}
+                />
+              </Frame>
             </Stack>
           </Box>
         </li>
