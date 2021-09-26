@@ -26,8 +26,8 @@
 </script>
 
 <script>
-  import Imposter from '$lib/components/primitives/layout/Imposter.svelte'
-  import Stack from '$lib/components/primitives/layout/Stack.svelte'
+  import Imposter from '$lib/components/layout-primitives/Imposter.svelte'
+  import Stack from '$lib/components/layout-primitives/Stack.svelte'
   import { onMount } from 'svelte'
 
   /**

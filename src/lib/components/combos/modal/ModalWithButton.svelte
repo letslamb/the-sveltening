@@ -1,5 +1,5 @@
 <script>
-  import Center from '$lib/components/primitives/layout/Center.svelte'
+  import Center from '$lib/components/layout-primitives/Center.svelte'
   import Modal, { prepareDOM } from './Modal.svelte'
 
   /**
