@@ -1,4 +1,8 @@
-// Detect if user is using a touch interface, add a 'touch' class to <body> if so
+// 
+/**
+ * If user is using a touch interface, add a 'touch' class to the body tag
+ * @param {HTMLElement} node 
+ */
 export function detectTouch(node) {
   window.addEventListener('touchstart', function touched() {
     document.body.classList.add('touch');
@@ -6,12 +10,15 @@ export function detectTouch(node) {
   }, false)
 }
 
-// Create aria-labelledby relationship with Section.svelte/Article.svelte's first heading tag.
-// The heading tag is dynamically generated based on number of levels nested within
-// instances of Section/Article comps, so we don't know which heading level it will be here
+/**
+ * Create aria-labelledby relationship with Section.svelte/Article.svelte's first heading tag.
+ * @param {HTMLElement} node 
+ */
 export function enhanceSection(node) {
 
-  // make sectionHeaderId undefined if no heading tags w/ ids are found in the section/article
+  // The heading tag is dynamically generated based on number of levels nested within
+  // instances of Section/Article comps, so we don't know which heading level it will be here.
+  // make sectionHeaderId undefined if no heading tags w/ ids are found in the Section/Article
   let sectionHeaderId = node.querySelector('h1, h2, h3, h4, h5, h6')
     ?.id
 
@@ -24,6 +31,10 @@ export function enhanceSection(node) {
 
 // Add the button inside the heading tag, hide the content, add an onclick method
 // to the button to show/hide the content
+/**
+ * @param {HTMLElement} node 
+ * @param {{ expanded: boolean, headerText: string }} params 
+ */
 export function enhanceToggleSection(node, params) {
   const heading = node.querySelector('h1, h2, h3, h4, h5, h6')
   heading.innerHTML = `
@@ -34,48 +45,71 @@ export function enhanceToggleSection(node, params) {
         <rect height="2" width="8" y="4" x="1" />
       </svg>
     </button>`
+
+  /** @type {HTMLElement} */
   const contentWrapper = node.querySelector('.content-wrapper')
+
   if (!params.expanded) {
     contentWrapper.hidden = true
   }
   let button = node.querySelector('button')
   button.onclick = () => {
     params.expanded = !params.expanded
-    button.setAttribute('aria-expanded', params.expanded)
+    button.setAttribute('aria-expanded', `${params.expanded}`)
     contentWrapper.hidden = !params.expanded
   }
 }
 
-export function intersectionObserver(node, boolean) {
-  if (boolean === true && typeof IntersectionObserver !== "undefined") {
+/**
+ * @param {HTMLElement} node 
+ * @typedef {Object} IntersectionObserverOptions - Options to pass to the IntersectionObserver API
+ * @property {HTMLElement} [root]
+ * @property {string} [rootMargin]
+ * @property {number} [threshold]
+ * @param {{ once?: boolean, cooldown?: number, options?: IntersectionObserverOptions, delay?: number, update?: *} | null } [config]
+ */
+
+export function intersectionObserver(node, config) {
+
+  let supported = "IntersectionObserver" in window
+
+  if (supported) {
     const onIntersection = (entry) => {
       node.dispatchEvent(new CustomEvent("intersection", {detail: entry}))
     }
 
-    let top = 0;
-    let bottom = 0;
-    let left = 0;
-    let right = 0;
+    let timeout = null
 
-    const rootMargin = `${bottom}px ${left}px ${top}px ${right}px`;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting === true) {
-          onIntersection(entries[0])
-          return observer.unobserve(node)
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting === true) {
+        onIntersection(entries[0])
+        if (config.once) return observer.unobserve(node)
+        if (config.cooldown) {
+          observer.unobserve(node)
+          if (timeout)
+            clearTimeout(timeout)
+            timeout = setTimeout(() => {
+              observer.observe(node)
+            }, config.cooldown)
         }
-        // if (intersecting && once) {
-        //   observer.unobserve(node);
-        // }
-      },
-      {
-        rootMargin,
       }
-    );
+    }, config.options)
 
-    observer.observe(node);
-    return () => observer.unobserve(node);
+    if (timeout)
+      clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        observer.observe(node)
+      }, config.delay ? config.delay : 0)
+
+    return {
+      update: (update) => {
+        console.log("update parameter changed")
+        if (timeout) clearTimeout(timeout)
+        observer.unobserve(node)
+        observer.observe(node)
+      },
+      destroy: () => observer.unobserve(node)
+    }
   }
   return
 }
