@@ -1,5 +1,5 @@
 <script>
-  import { intersectionObserver } from '$lib/js/actions'
+  import { intersectionObserver } from '$lib/index'
 
   /**
    * @type {string}
@@ -24,7 +24,7 @@
 
 
 <div
-  use:intersectionObserver={lazy}
+  use:intersectionObserver={lazy ? {once: true} : null}
   on:intersection={setIntersecting}
   class={wrapperClass
   ? `frame ${wrapperClass}`
