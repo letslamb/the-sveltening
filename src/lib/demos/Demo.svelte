@@ -32,10 +32,8 @@
 
 
   const kittyImages = filterArrayOfImageObjects(Kitty)
-  console.log(`kittyImages: ${JSON.stringify(kittyImages, null, ' ')}`)
 
   const jarritosImages = filterArrayOfImageObjects(Jarritos)
-  console.log(`jarritosImages: ${JSON.stringify(jarritosImages, null, ' ')}`)
 
   let items = [{uniqueId: "notify-email", visibleText: "Notify by email"}, {uniqueId: 'notify-sms', visibleText: "Notify by SMS"}]
 

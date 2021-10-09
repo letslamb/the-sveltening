@@ -15,8 +15,6 @@
 
   $: ascending = sortDir === 'ascending'
 
-  $: console.log(ascending)
-
 </script>
 
 {@html `
