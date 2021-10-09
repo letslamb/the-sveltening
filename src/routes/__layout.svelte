@@ -1,7 +1,7 @@
 <script>
   import '../app.css'
 
-  import Hamburger from '$lib/components/utils/HamburgerMenu.svelte'
+  import Hamburger from '$lib/toolbox/hamburger-menu/HamburgerMenu.svelte'
   import Kitty from '$static/kitty.jpg?w=200;400;&format=webp;jpg;&meta'
 </script>
 

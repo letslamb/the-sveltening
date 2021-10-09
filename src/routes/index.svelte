@@ -1,6 +1,6 @@
 <script>
 
-  import TestLayoutPrimitives from '$lib/components/demos/Demo.svelte'
+  import TestLayoutPrimitives from '$lib/demos/Demo.svelte'
 
 </script>
 
