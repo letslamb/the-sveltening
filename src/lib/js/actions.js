@@ -71,6 +71,8 @@ export function enhanceToggleSection(node, params) {
 
 export function intersectionObserver(node, config) {
 
+  if (config === null) return
+
   let supported = "IntersectionObserver" in window
 
   if (supported) {

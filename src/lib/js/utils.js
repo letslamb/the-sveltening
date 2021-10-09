@@ -1,6 +1,11 @@
 
-// Detect if a browser supports a CSS property/value combo
-export function isDeclarationSupported(property, value) {
+/**
+ * Detect if a browser supports a CSS property/value combo
+ * @param {string} property
+ * @param {string} value
+ * @returns {boolean}
+*/ 
+export function isDeclarationSupported (property, value) {
   let prop = property + ':',
     el = document.createElement('test'),
     mStyle = el.style
@@ -8,4 +13,32 @@ export function isDeclarationSupported(property, value) {
   return mStyle[property]
 }
 
+/**
+ * Filter an array of image objects to output one with only allowed keys
+ * @param {Array.<{}>} arrayOfImageObjects
+ * @returns {Array.<{format: string, width: (string|number), height: (string|number), src: string}>}
+*/
+export function filterArrayOfImageObjects (arrayOfImageObjects) {
+  const newArr = []
 
+  const allowed = ['format', 'width', 'height', 'src'];
+
+  for (const imageObject of arrayOfImageObjects) {
+
+    let filtered = Object.fromEntries(
+      Object.entries(imageObject).filter(
+        ([key, val]) => allowed.includes(key)
+      )
+    )
+    newArr.push(filtered)
+  }
+
+  /**
+   * @type {Array.<{format: string, width: (string|number), height: (string|number), src: string}>}
+   */
+  /* @ts-ignore */
+  let webpsOnly = newArr.filter(x => x.format === 'webp')
+  webpsOnly.reverse()
+
+  return webpsOnly
+}
