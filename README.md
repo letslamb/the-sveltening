@@ -4,7 +4,7 @@ A **_work-in-progress_** design system for empowering developers to build access
 
 ## Toolbox
 **/layout/** 
-  - low-level layout context components, _heavily_ based on Heydon Pickering & Andy Bell's [Every Layout](https://every-layout.dev). These components solve most common layout needs. If you want to learn more about how they work and how to leverage browser algorithms to make your own design system, you should buy [Every Layout](https://every-layout.dev). The website also offers a sizable chunk of their content for free, so you can sample it and see for yourself before buying.
+  - low-level layout context components, based on Heydon Pickering & Andy Bell's [Every Layout](https://every-layout.dev), and adapted for Svelte. These components solve most common layout needs. If you want to learn more about how they work, and how to design algorithmically instead of fighting to make layouts do what you want, _**[you should buy Every Layout](https://every-layout.dev/checkout/)**_. Seriously, it's one of the best investments I've made in my learning journey and I can't recommend it enough. The website also offers a sizable chunk of their content for free, so you can sample it and see for yourself before buying.
 
 
 ### Accessible Component Templates
