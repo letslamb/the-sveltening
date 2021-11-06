@@ -113,11 +113,11 @@
 
   /* put spacing between the children of the reel, but exclude the visually hidden <span> */
   .reel > :global(*:not(span) + *) {
-    margin-left: var(--reel-spacing, 1rem);
+    margin-left: var(--space, 1rem);
   }
 
   .reel:global(.overflowing) {
-    padding-bottom: var(--reel-spacing, 1rem);
+    padding-bottom: var(--space, 1rem);
   }
 
   /* add a focus style, since we're using tabindex=0 to make the reel focusable */

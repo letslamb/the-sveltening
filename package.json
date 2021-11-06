@@ -18,6 +18,9 @@
   },
   "type": "module",
   "dependencies": {
+    "@fontsource/inter": "^4.5.0",
+    "@fontsource/roboto": "^4.5.1",
+    "@fontsource/work-sans": "^4.5.1",
     "vite-imagetools": "^3.6.7"
   }
 }

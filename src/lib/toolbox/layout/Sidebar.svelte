@@ -27,7 +27,7 @@
 
 <style>
   /* Properties exposed as CSS variables:
-      --sidebar-main-spacing => used for spacing between sidebar-content and main-content
+      --sidebar-spacing => used for spacing between sidebar-content and main-content
       --sidebar-width => without the current 20rem default value, it will default to the width of its contents
       --sidebar-content-content-min-width
   */
